@@ -1,23 +1,49 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap");
 :root {
-  --background-dark: #121212;
-  --text-color-dark: #c1c1c1;
-  --background-light: #f3f3f3;
-  --text-color-light: #010101;
-  --primary: #99c5c4;
+  /* Catppuccin Mocha */
+  --ctp-rosewater: #f5e0dc;
+  --ctp-flamingo: #f2cdcd;
+  --ctp-pink: #f5c2e7;
+  --ctp-mauve: #cba6f7;
+  --ctp-red: #f38ba8;
+  --ctp-maroon: #eba0ac;
+  --ctp-peach: #fab387;
+  --ctp-yellow: #f9e2af;
+  --ctp-green: #a6e3a1;
+  --ctp-teal: #94e2d5;
+  --ctp-sky: #89dceb;
+  --ctp-sapphire: #74c7ec;
+  --ctp-blue: #89b4fa;
+  --ctp-lavender: #b4befe;
+  /* Text */
+  --ctp-text: #cdd6f4;
+  --ctp-subtext1: #bac2de;
+  --ctp-subtext0: #a6adc8;
+  /* Overlays */
+  --ctp-overlay2: #9399b2;
+  --ctp-overlay1: #7f849c;
+  --ctp-overlay0: #6c7086;
+  /* Surfaces */
+  --ctp-surface2: #585b70;
+  --ctp-surface1: #45475a;
+  --ctp-surface0: #313244;
+  /* Base (backgrounds) */
+  --ctp-base: #1e1e2e;
+  --ctp-mantle: #181825;
+  --ctp-crust: #11111b;
 }
 
 * {
   padding: 0;
   margin: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Fira Code", sans-serif;
   box-sizing: border-box;
 }
 
 body {
   height: 100%;
-  background-color: var(--background-light);
-  color: var(--text-color-light);
+  background-color: var(--ctp-base);
+  color: var(--ctp-text);
 }
 
 header {
@@ -29,13 +55,6 @@ header {
   justify-content: center;
   text-align: center;
   gap: 40%;
-}
-header h1 {
-  font-size: 2em;
-}
-header h1 a {
-  color: var(--text-color-light);
-  text-decoration: none;
 }
 header nav {
   display: flex;
@@ -55,16 +74,16 @@ header nav ul {
 header nav ul li a {
   position: relative;
   display: inline-block;
-  color: var(--text-color-light);
+  color: var(--ctp-text);
   text-decoration: none;
 }
 header nav ul a#active-page {
-  color: var(--primary);
+  color: var(--ctp-blue);
 }
 header nav ul a#active-page::before,
 header nav ul a:hover::before {
   content: "";
-  background-color: var(--primary);
+  background-color: var(--ctp-blue);
   border-radius: 40px;
   width: 100%;
   height: 2.5px;
@@ -72,13 +91,99 @@ header nav ul a:hover::before {
   bottom: -5px;
 }
 
+@keyframes caret_blink {
+  0% {
+    opacity: 0;
+  }
+  49.9% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 main {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 3em;
+  position: relative;
 }
 main section {
   width: 50%;
-  height: 60vh;
-  background-color: red;
+}
+main section .container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30%;
+}
+main #headers {
+  padding: 1rem;
+}
+main #headers #name::before {
+  content: "> ";
+  color: var(--ctp-blue);
+}
+main #headers #name::after {
+  content: "_";
+  animation-name: caret_blink;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+main #headers #title {
+  margin-left: 2.5em;
+  font-style: italic;
+  color: var(--ctp-subtext0);
+  font-size: 0.75rem;
+}
+main #description {
+  width: 40%;
+  font-size: 0.8em;
+}
+main b {
+  color: var(--ctp-blue);
+}
+main #profile_picture {
+  height: 176px;
+  border-radius: 50%;
+}
+main #skills ul {
+  list-style: none;
+}
+main #skills #skill_js {
+  width: 60%;
+  height: 12px;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--ctp-surface2);
+}
+main #skills #skill_js::before {
+  content: "";
+  width: 40%;
+  height: 100%;
+  background: var(--ctp-blue);
+  position: relative;
+  top: 0;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10%;
+}
+footer .content {
+  width: 50%;
+}
+footer .content li {
+  list-style: none;
+}
+footer .content li a {
+  text-decoration: none;
 }/*# sourceMappingURL=styles.css.map */
