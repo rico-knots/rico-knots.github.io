@@ -52,7 +52,6 @@ body {
 }
 
 header {
-	position: sticky;
 	top: 0%;
 
 	height: 120px;
@@ -117,17 +116,18 @@ header {
 }
 
 main {
-	// background: green;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
 	gap: 3em;
 	position: relative;
+
 	section {
 		width: 50%;
+		max-width: 50%;
 		// height: 60vh;
-		// background: purple;
+		// background: green;
 
 		.container {
 			display: flex;
@@ -136,6 +136,7 @@ main {
 			gap: 30%;
 		}
 	}
+
 	#headers {
 		padding: 1rem;
 		#name::before {
@@ -187,6 +188,75 @@ main {
 			top: 0;
 		}
 	}
+
+	// projects page
+	#project-list {
+		width: min(700px, 90%);
+		display: flex;
+		flex-direction: column;
+		gap: 1.5em;
+
+		.project {
+			width: 100%;
+			background: var(--ctp-surface0);
+			border: 1px solid var(--ctp-surface1);
+			border-radius: 8px;
+			padding: 1.25em;
+			display: flex;
+			flex-direction: column;
+			gap: 0.75em;
+			transition:
+				border-color 0.15s ease,
+				transform 0.15s ease;
+
+			&:hover {
+				border-color: var(--ctp-surface2);
+				transform: translateY(-2px);
+			}
+
+			.project-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.project-link {
+				font-size: 1.3em;
+				color: var(--ctp-subtext0);
+				transition: color 0.15s ease;
+
+				&:hover {
+					color: var(--ctp-blue);
+				}
+			}
+
+			.content {
+				width: 100%;
+				box-sizing: border-box;
+				display: grid;
+				grid-template-columns: 128px 1fr;
+				gap: 1.5em;
+				align-items: start;
+
+				img {
+					grid-column: 1;
+					width: 128px;
+					height: 128px;
+					object-fit: cover;
+					border-radius: 12px;
+				}
+
+				p {
+					grid-column: 2;
+					width: 100%;
+					margin: 0;
+					color: var(--ctp-subtext0);
+					font-size: 0.9em;
+					line-height: 1.6;
+				}
+			}
+		}
+	}
 }
 
 footer {
@@ -195,7 +265,6 @@ footer {
 	align-items: center;
 	height: 10%;
 	.content {
-		// background: red;
 		width: 50%;
 
 		li {
@@ -204,5 +273,92 @@ footer {
 				text-decoration: none;
 			}
 		}
+	}
+}
+
+main {
+	padding: 0 1rem; // stops content touching screen edges on mobile
+}
+
+header nav ul {
+	flex-wrap: wrap; // already had flex-wrap on nav; ul itself should wrap too if needed
+}
+
+@media (max-width: 768px) {
+	header {
+		height: auto;
+		padding: 1rem 0;
+		gap: 0; // 40% gap was only sensible on wide screens
+
+		nav ul {
+			gap: 24px;
+			justify-content: center;
+		}
+	}
+
+	main section {
+		width: 90%;
+		max-width: 90%;
+		height: auto; // 60vh was forcing awkward whitespace once content reflows
+	}
+
+	#headers {
+		text-align: center;
+
+		#title {
+			margin-left: 0; // was offset assuming a left-aligned name above it
+		}
+	}
+
+	.container {
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5em; // 30% gap makes no sense once items stack vertically
+		text-align: center;
+	}
+
+	#description {
+		width: 100%;
+	}
+
+	#project-list {
+		width: 90%;
+	}
+
+	.project .content {
+		grid-template-columns: 1fr; // drop the fixed image column, stack instead
+		justify-items: center;
+
+		img {
+			justify-self: center;
+		}
+
+		p {
+			text-align: center;
+		}
+	}
+}
+
+@media (max-width: 480px) {
+	header nav ul {
+		gap: 16px;
+		font-size: 0.9em;
+	}
+
+	#headers #name {
+		font-size: 1.3rem;
+	}
+
+	#profile_picture {
+		height: 140px; // 176px is a lot of vertical space on a small phone
+	}
+
+	.project {
+		padding: 1em 0.85em;
+	}
+
+	.project .content img {
+		width: 100px;
+		height: 100px;
 	}
 }
