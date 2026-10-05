@@ -701,3 +701,21 @@ footer {
 		}
 	}
 }
+
+.not-found {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1em;
+
+	b {
+		color: var(--ctp-blue);
+	}
+
+	a {
+		color: var(--ctp-text);
+		text-decoration: none;
+	}
+}
