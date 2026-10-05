@@ -1,41 +1,48 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Enrico - Projecten</title>
-        <link rel="stylesheet" href="../css/styles.css" />
-        <script
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Enrico - Projecten</title>
+		<link rel="stylesheet" href="../css/styles.css" />
+		<script
 			src="https://kit.fontawesome.com/d1df176f78.js"
 			crossorigin="anonymous"
 		></script>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li>
-                        <a id="active-page" href="projects.html">Projecten</a>
-                    </li>
-                    <li><a href="blog.html">Blog</a></li>
-                </ul>
-            </nav>
-        </header>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<ul>
+					<li><a href="../index.html">Home</a></li>
+					<li>
+						<a id="active-page" href="projects.html">Projecten</a>
+					</li>
+					<li><a href="blog.html">Blog</a></li>
+				</ul>
+			</nav>
+		</header>
 
-        <main>
-
-            
-            <section id="project-list">
-                <div id="headers">
+		<main>
+			<section id="projects">
+				<div id="headers">
 					<h2 id="name">Projecten</h2>
 				</div>
-            </section>
-            
-        </main>
 
-        <footer></footer>
-    </body>
+				<!-- Filterknoppen: de JS vult dit element in -->
+				<div
+					class="project-filters"
+					role="group"
+					aria-label="Filter projecten"
+				></div>
 
-    <script src="index.js"></script>
+				<!-- Projectkaarten: de JS vult dit element in -->
+				<div id="project-list"></div>
+			</section>
+		</main>
+
+		<footer></footer>
+
+		<script src="index.js"></script>
+	</body>
 </html>

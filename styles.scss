@@ -32,6 +32,78 @@ $bp-mobile: 480px;
 	}
 }
 
+// Text inputs / textarea
+@mixin field {
+	width: 100%;
+	padding: 0.7em 0.9em;
+	font-size: 0.85rem;
+	color: var(--ctp-text);
+	background: var(--ctp-mantle);
+	border: 1px solid var(--ctp-surface1);
+	border-radius: 8px;
+	transition:
+		border-color 0.15s ease,
+		box-shadow 0.15s ease;
+
+	&::placeholder {
+		color: var(--ctp-overlay0);
+	}
+
+	&:focus {
+		outline: none;
+		border-color: var(--ctp-blue);
+		box-shadow: 0 0 0 3px rgba(137, 180, 250, 0.25);
+	}
+}
+
+// Buttons
+@mixin button-base {
+	padding: 0.65em 1.2em;
+	font-size: 0.85rem;
+	font-weight: 600;
+	border-radius: 8px;
+	border: 1px solid var(--ctp-blue);
+	cursor: pointer;
+	transition:
+		background-color 0.15s ease,
+		border-color 0.15s ease,
+		transform 0.15s ease;
+
+	&:hover {
+		transform: translateY(-1px);
+	}
+
+	&:active {
+		transform: translateY(0);
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--ctp-lavender);
+		outline-offset: 2px;
+	}
+}
+
+@mixin button-primary {
+	@include button-base;
+	background: var(--ctp-blue);
+	color: var(--ctp-crust);
+
+	&:hover {
+		background: var(--ctp-lavender);
+		border-color: var(--ctp-lavender);
+	}
+}
+
+@mixin button-secondary {
+	@include button-base;
+	background: transparent;
+	color: var(--ctp-blue);
+
+	&:hover {
+		background: var(--ctp-surface0);
+	}
+}
+
 :root {
 	// Catppuccin Mocha
 	--ctp-rosewater: #f5e0dc;
@@ -404,6 +476,180 @@ main {
 						text-align: center;
 					}
 				}
+			}
+		}
+	}
+
+	#projects {
+		width: min(700px, 100%);
+	}
+
+	.project-filters {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 1.25rem;
+
+		.filter-chip {
+			padding: 0.4em 0.9em;
+			font-size: 0.8rem;
+			color: var(--ctp-text);
+			background: var(--ctp-surface0);
+			border: 1px solid var(--ctp-surface1);
+			border-radius: 999px;
+			cursor: pointer;
+			transition:
+				background-color 0.15s ease,
+				border-color 0.15s ease,
+				color 0.15s ease;
+
+			&:hover {
+				border-color: var(--ctp-blue);
+			}
+
+			&:focus-visible {
+				outline: 2px solid var(--ctp-lavender);
+				outline-offset: 2px;
+			}
+
+			&.active {
+				background: var(--ctp-blue);
+				border-color: var(--ctp-blue);
+				color: var(--ctp-crust);
+				font-weight: 600;
+			}
+		}
+
+		@include tablet {
+			justify-content: center;
+		}
+	}
+
+	#project-list .project .project-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+
+		.tag {
+			padding: 0.15em 0.6em;
+			font-size: 0.7rem;
+			color: var(--ctp-blue);
+			border: 1px solid var(--ctp-surface2);
+			border-radius: 999px;
+		}
+
+		@include tablet {
+			justify-content: center;
+		}
+	}
+
+	#riddles {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.75rem;
+
+		h3,
+		.riddle-title,
+		.riddle-input {
+			grid-column: 1 / -1;
+		}
+
+		h3 {
+			margin-bottom: 0.25rem;
+		}
+
+		.riddle-title {
+			@include card;
+			min-height: 5em;
+			justify-content: center;
+			font-size: 0.9em;
+			line-height: 1.6;
+			color: var(--ctp-subtext1);
+
+			// no hover lift on a static text card
+			&:hover {
+				border-color: var(--ctp-surface1);
+				transform: none;
+			}
+		}
+
+		.riddle-input {
+			@include field;
+		}
+
+		.submit_riddle {
+			@include button-primary;
+		}
+
+		.new_riddle {
+			@include button-secondary;
+		}
+
+		@include tablet {
+			h3 {
+				text-align: center;
+			}
+		}
+
+		@include mobile {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	.contact {
+		h3 {
+			margin-bottom: 0.75rem;
+		}
+
+		.container {
+			form {
+				flex: 1 1 100%;
+				max-width: 600px;
+				display: flex;
+				flex-direction: column;
+				gap: 0.4rem;
+
+				label {
+					margin-top: 0.6rem;
+					font-size: 0.8rem;
+					color: var(--ctp-subtext1);
+				}
+
+				input:not([type="submit"]),
+				textarea {
+					@include field;
+				}
+
+				textarea {
+					min-height: 140px;
+					resize: vertical;
+				}
+
+				input[type="submit"] {
+					@include button-primary;
+					align-self: flex-start;
+					margin-top: 1rem;
+				}
+			}
+
+			// keep the form left-aligned and full width when stacked
+			@include tablet {
+				flex-direction: column;
+				align-items: stretch;
+				text-align: left;
+			}
+		}
+
+		@include tablet {
+			h3 {
+				text-align: center;
+			}
+		}
+
+		@include mobile {
+			.container form input[type="submit"] {
+				align-self: stretch;
 			}
 		}
 	}

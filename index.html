@@ -80,6 +80,53 @@
 					<li><i class="fa-brands fa-git-alt"></i> Git</li>
 				</ul>
 			</section>
+
+			<section id="riddles">
+				<h3>Riddles</h3>
+				<div class="riddle-title"></div>
+				<input type="text" class="riddle-input" />
+				<button class="submit_riddle">Submit</button>
+				<button class="new_riddle">New Riddle</button>
+			</section>
+
+			<section class="contact">
+				<h3>Contact</h3>
+
+				<div class="container">
+					<form>
+						<label for="fname">First Name</label>
+						<input
+							type="text"
+							id="fname"
+							name="firstname"
+							placeholder="Your name.."
+							required="true"
+						/>
+
+						<label for="lname">Last Name</label>
+						<input
+							type="text"
+							id="lname"
+							name="lastname"
+							placeholder="Your last name.."
+							required="true"
+						/>
+
+						<label for="subject">Subject</label>
+						<textarea
+							id="subject"
+							name="subject"
+							placeholder="Write something.."
+							spellcheck="true"
+							required="true"
+						></textarea>
+
+						<input type="submit" value="Submit" />
+					</form>
+				</div>
+			</section>
 		</main>
 	</body>
+
+	<script src="index.js"></script>
 </html>
