@@ -99,6 +99,7 @@ const random_cat = () =>
 
 if (riddle_element) {
 	function new_riddle() {
+		riddle_element.textContent = "Nieuwe riddle laden...";
 		fetch(`${api_url}${random_cat()}`)
 			.then((res) => res.json())
 			.then((data) => {
