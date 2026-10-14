@@ -255,7 +255,7 @@ main {
 			gap: 2rem;
 
 			@include tablet {
-				flex-direction: column-reverse; // picture first, text below
+				flex-direction: column-reverse;
 				align-items: center;
 				gap: 1.5em;
 				text-align: center;
